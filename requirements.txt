@@ -1,0 +1,6 @@
+plyer
+requests
+bs4
+tqdm
+autopep8
+lxml
