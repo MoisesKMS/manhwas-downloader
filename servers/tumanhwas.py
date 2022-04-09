@@ -6,8 +6,8 @@ from bs4 import BeautifulSoup
 host = 'https://tumanhwas.com/'
 
 
-def main():
-    # ** Main function to get the last updates **
+def latest_updates():
+    # ** Main function to get the latest updates **
 
     body = m.Engine.navigate(host).find_all('div', 'listupd')[0]
 
@@ -49,4 +49,4 @@ def main():
 
     result = {}
     result['last_updates'] = listSeries
-    return json.dumps(result, indent=4, ensure_ascii=False).encode('utf-8')
+    return json.dumps(result, ensure_ascii=False).encode('utf-8')

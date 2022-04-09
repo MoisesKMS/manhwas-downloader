@@ -1,5 +1,15 @@
-from servers import TuManhwas as tm
+from flask import Flask
+from servers import TuManhwas
 
-document = tm.main()
+app = Flask(__name__)
 
-print(document.decode())
+
+@app.route('/api/tumanhwas/latest-updates', methods=['GET'])
+def TM_latesUpdates():
+    respuesta = TuManhwas.latest_updates()
+    respuesta.headers.add('Access-Control-Allow-Origin', '*')
+    return respuesta
+
+
+if __name__ == '__main__':
+    app.run(debug=True, port=3000)
