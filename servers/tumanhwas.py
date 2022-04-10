@@ -1,7 +1,6 @@
-from base import Engine as m
+from base import engine
 import json
 from bs4 import BeautifulSoup
-import array
 
 host = 'https://tumanhwas.com/'
 
@@ -9,7 +8,7 @@ host = 'https://tumanhwas.com/'
 def latest_updates():
     # ** Main function to get the latest updates **
 
-    body = m.Engine.navigate(host).find_all('div', 'listupd')[0]
+    body = engine.navigate(host).find_all('div', 'listupd')[0]
 
     # get Titles
     titles = body.find_all('div', 'tt')
