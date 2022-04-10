@@ -1,0 +1,127 @@
+/* Base */
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding: 10rem;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 1.6rem;
+    background-color: #f1f1f1;
+}
+
+img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+
+/* Estilos  propios */
+
+.contenedor {
+    margin: 5rem auto;
+    max-width: 1200px;
+    padding: 2rem;
+    border-radius: 3rem;
+    background-color: #fff;
+}
+
+.contenedor h1 {
+    text-align: center;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.lista-series {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 3.2rem;
+}
+
+.serie {
+    width: 95%;
+    max-width: 20rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    transition: all .2s;
+}
+
+.serie:hover {
+    transform: scale(1.03);
+}
+
+.serie__imagen {
+    width: 100%;
+    height: 30rem;
+    object-fit: cover;
+}
+
+.serie__info {
+    position: absolute;
+    bottom: 3rem;
+    padding: 1rem;
+    font-family: Helvetica, Arial, sans-serif;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4682247899159664) 25%, rgba(0, 0, 0, 1) 100%);
+    color: #fff;
+    width: 100%;
+}
+
+.serie__nombre {
+    font-size: 1.7rem;
+    margin-bottom: 0;
+}
+
+.serie__capitulo,
+.serie__url {
+    display: block;
+    margin-top: .5rem;
+    text-decoration: none;
+    color: #f1f1f1;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.serie__capitulo {
+    position: absolute;
+    top: 1rem;
+    padding: 1rem;
+    border-radius: 1rem 0 0 1rem;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all .2s;
+}
+
+.serie__capitulo:hover {
+    text-decoration: underline;
+    background-color: rgba(0, 0, 0, 1.0);
+}
+
+.serie__url {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkslateblue;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    transition: all .2s;
+}
+
+.serie__url:hover {
+    background-color: darkcyan;
+}

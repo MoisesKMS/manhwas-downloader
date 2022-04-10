@@ -7,133 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prueba</title>
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" href="app.css">
 </head>
 
 <body>
 
     <style>
-        /* Base */
-        
-        html {
-            box-sizing: border-box;
-            font-size: 62.5%;
-            scroll-behavior: smooth;
-            scroll-padding: 10rem;
-        }
-        
-        *,
-        *::before,
-        *::after {
-            box-sizing: inherit;
-        }
-        
-        body {
-            font-size: 1.6rem;
-            background-color: #f1f1f1;
-        }
-        
-        img {
-            display: block;
-            height: auto;
-            max-width: 100%;
-        }
-        /* Estilos  propios */
-        
-        .contenedor {
-            margin: 5rem auto;
-            max-width: 1200px;
-            padding: 2rem;
-            border-radius: 3rem;
-            background-color: #fff;
-        }
-        
-        .contenedor h1 {
-            text-align: center;
-            font-family: Helvetica, Arial, sans-serif;
-        }
-        
-        .lista-series {}
-        
-        .serie {
-            width: 95%;
-            max-width: 20rem;
-            border-radius: 1rem;
-            overflow: hidden;
-            position: relative;
-            transition: all .2s;
-        }
-        
-        .serie:hover {
-            transform: scale(1.03);
-        }
-        
-        .serie__imagen {
-            width: 100%;
-            height: 30rem;
-            object-fit: cover;
-        }
-        
-        .serie__info {
-            position: absolute;
-            bottom: 3rem;
-            padding: 1rem;
-            font-family: Helvetica, Arial, sans-serif;
-            background: rgb(0, 0, 0);
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4682247899159664) 25%, rgba(0, 0, 0, 1) 100%);
-            color: #fff;
-            width: 100%;
-        }
-        
-        .serie__nombre {
-            font-size: 1.7rem;
-            margin-bottom: 0;
-        }
-        
-        .serie__capitulo,
-        .serie__url {
-            display: block;
-            margin-top: .5rem;
-            text-decoration: none;
-            color: #f1f1f1;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        
-        .serie__capitulo:hover {
-            text-decoration: underline;
-        }
-        
-        .serie__url {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 3rem;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: darkslateblue;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 1.3rem;
-            transition: all .2s;
-        }
-        
-        .serie__url:hover {
-            background-color: darkcyan;
-        }
+
     </style>
 
     <main class="contenedor">
         <h1>Últimos Capítulos</h1>
-        <div class="lista-series">
-            <div class="serie">
-                <img src="https://tumanhwas.com/assets_m/series/covers/60b673810d0c0.jpg" alt="NOMBRE SERIE" class="serie__imagen">
-                <div class="serie__info">
-                    <h2 class="serie__nombre">La Villana Es Una Marioneta</h2>
-                    <a href="#" class="serie__capitulo">Chapter: 55</a>
-                </div>
-                <a href="#" class="serie__url">Ver más</a>
-            </div>
+        <div class="lista-series" id="lista-series">
         </div>
     </main>
 

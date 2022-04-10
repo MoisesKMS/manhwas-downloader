@@ -5,3 +5,4 @@ tqdm
 autopep8
 lxml
 flask
+flask-cors

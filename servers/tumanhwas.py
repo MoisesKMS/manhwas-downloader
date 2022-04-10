@@ -1,7 +1,7 @@
 from base import Engine as m
 import json
 from bs4 import BeautifulSoup
-
+import array
 
 host = 'https://tumanhwas.com/'
 
@@ -13,7 +13,7 @@ def latest_updates():
 
     # get Titles
     titles = body.find_all('div', 'tt')
-    listSeries = {}
+    listSeries = []
 
     # get Series
     seriesContainer = body.find_all('div', 'bsx')
@@ -21,7 +21,6 @@ def latest_updates():
     for serie in seriesContainer:
         # get Title
         title = serie.find('div', 'tt').text.strip()
-        listSeries[title] = {}
 
         # get Url
         urlSerie = serie.find('a')['href'].strip().split('leer')[1][1:]
@@ -30,22 +29,26 @@ def latest_updates():
         urlSerie = '-'.join(urlSerie.split(' ')[:-1])
         urlSerie = host + 'manga/' + urlSerie
 
-        listSeries[title]['url'] = urlSerie
-
         # get Image
         image = serie.find('img')['src'].strip()
-        listSeries[title]['image'] = image
 
         # get last Chapter
         # *title
         chapterName = serie.find('div', 'epxs').text.strip()
         # *link
         chapterLink = serie.find('a')['href'].strip()
-
         chapterList = {}
-        chapterList['name'] = chapterName
-        chapterList['url'] = chapterLink
-        listSeries[title]['last_chapter'] = chapterList
+        chapterList['capitulo_nombre'] = chapterName
+        chapterList['capitulo_url'] = chapterLink
+
+        objSerie = {
+            'titulo': title,
+            'url': urlSerie,
+            'imagen': image,
+            'ultimo_capitulo': chapterList
+        }
+
+        listSeries.append(objSerie)
 
     result = {}
     result['last_updates'] = listSeries

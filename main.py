@@ -1,14 +1,14 @@
 from flask import Flask
+from flask_cors import CORS
 from servers import TuManhwas
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
-@app.route('/api/tumanhwas/latest-updates', methods=['GET'])
+@app.route('/api/tumanhwas/latest-updates')
 def TM_latesUpdates():
-    respuesta = TuManhwas.latest_updates()
-    respuesta.headers.add('Access-Control-Allow-Origin', '*')
-    return respuesta
+    return TuManhwas.latest_updates().decode()
 
 
 if __name__ == '__main__':

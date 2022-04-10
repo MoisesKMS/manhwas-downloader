@@ -4,21 +4,57 @@ function eventos() {
     ultimosCapitulos();
 }
 
-async function ultimosCapitulos() {
-    // <div class="serie">
-    //             <img src="https://tumanhwas.com/assets_m/series/covers/60b673810d0c0.jpg" alt="NOMBRE SERIE" class="serie__imagen">
-    //             <div class="serie__info">
-    //                 <h2 class="serie__nombre">La Villana Es Una Marioneta</h2>
-    //                 <a href="#" class="serie__capitulo">Chapter: 55</a>
-    //             </div>
-    //             <a href="#" class="serie__url">Ver más</a>
-    //         </div>
+function listarSeries(titulo, url, imagen, capitulo_nombre, capitulo_url) {
+    const seriesContainer = document.querySelector('#lista-series')
 
+    const div_serie = document.createElement('DIV');
+    div_serie.classList.add('serie');
+
+    const img_imagen = document.createElement('IMG');
+    img_imagen.src = imagen;
+    img_imagen.setAttribute('alt', titulo)
+    img_imagen.classList.add('serie__imagen')
+    div_serie.appendChild(img_imagen)
+
+    const a_capitulo = document.createElement('A');
+    a_capitulo.classList.add('serie__capitulo')
+    a_capitulo.setAttribute('href', capitulo_url)
+    a_capitulo.textContent = capitulo_nombre
+    div_serie.appendChild(a_capitulo)
+
+
+    const div_info = document.createElement('DIV');
+    div_info.classList.add('serie__info');
+
+    const h2_nombre = document.createElement('H2');
+    h2_nombre.classList.add('serie__nombre')
+    h2_nombre.textContent = titulo
+    div_info.appendChild(h2_nombre)
+    div_serie.appendChild(div_info)
+
+
+    const a_url = document.createElement('a');
+    a_url.classList.add('serie__url')
+    a_url.setAttribute('href', url)
+    a_url.textContent = 'Ver más';
+    div_serie.appendChild(a_url)
+
+    seriesContainer.appendChild(div_serie)
+
+}
+async function ultimosCapitulos() {
     try {
-        const respuesta = await fetch('http://127.0.0.1:3000/api/tumanhwa/latest-updates');
+        const respuesta = await fetch('http://127.0.0.1:3000/api/tumanhwas/latest-updates');
         const resultado = await respuesta.json()
 
-        console.log(resultado);
+        series = resultado.last_updates;
+
+        series.forEach(serie => {
+            const { titulo, url, imagen } = serie;
+            const { capitulo_nombre, capitulo_url } = serie.ultimo_capitulo;
+            listarSeries(titulo, url, imagen, capitulo_nombre, capitulo_url);
+        });
+
     } catch (error) {
         console.log(error);
     }
