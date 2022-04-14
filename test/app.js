@@ -47,7 +47,7 @@ async function ultimosCapitulos() {
         const respuesta = await fetch('http://127.0.0.1:3000/api/tumanhwas/latest-updates');
         const resultado = await respuesta.json()
 
-        series = resultado.last_updates;
+        const series = resultado.last_updates;
 
         series.forEach(serie => {
             const { titulo, url, imagen } = serie;
