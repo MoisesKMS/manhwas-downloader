@@ -1,6 +1,5 @@
 from base import engine
 import json
-from bs4 import BeautifulSoup
 
 host = 'https://tumanhwas.com/'
 
@@ -10,8 +9,6 @@ def latest_updates():
 
     body = engine.navigate(host).find_all('div', 'listupd')[0]
 
-    # get Titles
-    titles = body.find_all('div', 'tt')
     listSeries = []
 
     # get Series
