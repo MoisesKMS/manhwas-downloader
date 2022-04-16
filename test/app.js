@@ -43,12 +43,16 @@ function listarSeries(titulo, url, imagen, capitulo_nombre, capitulo_url) {
 
 }
 async function ultimosCapitulos() {
+    const seriesContainer = document.querySelector('#lista-series')
+
+    slider(seriesContainer);
     try {
         const respuesta = await fetch('http://127.0.0.1:3000/api/tumanhwas/latest-updates');
         const resultado = await respuesta.json()
 
         const series = resultado.last_updates;
 
+        limpiarHTML(seriesContainer);
         series.forEach(serie => {
             const { titulo, url, imagen } = serie;
             const { capitulo_nombre, capitulo_url } = serie.ultimo_capitulo;
@@ -57,5 +61,15 @@ async function ultimosCapitulos() {
 
     } catch (error) {
         console.log(error);
+    }
+}
+
+function slider(contenedor) {
+    contenedor.innerHTML = `<div class="spinner"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>`;
+}
+
+function limpiarHTML(elemento) {
+    while (elemento.firstChild) {
+        elemento.removeChild(elemento.firstChild);
     }
 }
